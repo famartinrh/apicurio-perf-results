@@ -13,7 +13,7 @@ jobs:
   process:
     name: gatling-report
     runs-on: ubuntu-18.04
-    if: github.repository_owner == 'Apicurio'
+    # if: github.repository_owner == 'Apicurio'
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
@@ -26,11 +26,15 @@ jobs:
 
       - name: Generate report
         run: ./scripts/run-gatling-report.sh
+
+      - name: Generate web page
+        run: ./scripts/generate-web.sh
       
       - name: Commit report
         run: |
           git config --global user.name "apicurio-ci"
           git config --global user.email "apicurio.ci@gmail.com"
           git add reports
+          git add index.html
           git commit -m "Automated test results report update"
           git push
