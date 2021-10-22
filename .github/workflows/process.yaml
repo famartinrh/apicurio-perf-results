@@ -28,7 +28,7 @@ jobs:
         run: ./scripts/run-gatling-report.sh
 
       - name: Generate web page
-        run: ./scripts/generate-index.py
+        run: python ./scripts/generate-index.py
       
       - name: Commit report
         run: |
