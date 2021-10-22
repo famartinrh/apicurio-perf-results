@@ -11,7 +11,7 @@ on:
 
 jobs:
   process:
-    name: gatling-report
+    name: process-results
     runs-on: ubuntu-18.04
     # if: github.repository_owner == 'Apicurio'
     steps:
@@ -28,7 +28,7 @@ jobs:
         run: ./scripts/run-gatling-report.sh
 
       - name: Generate web page
-        run: ./scripts/generate-web.sh
+        run: ./scripts/generate-index.py
       
       - name: Commit report
         run: |
